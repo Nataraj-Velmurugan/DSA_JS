@@ -1,0 +1,14 @@
+let nums = [2, 2, 3, 1, 4, 0, 5];
+let target = 5;
+
+let twoSum = (nums, target) => {
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = 1; j < nums.length; j++) {
+            if(nums[i]+nums[j] === target){
+                console.log(i, j)
+            }
+        }
+    }
+}
+
+twoSum(nums, target)
