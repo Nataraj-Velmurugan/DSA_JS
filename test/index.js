@@ -24,43 +24,22 @@
 
 // removeDuplicates(nums, dup)
 
-var chai = require('chai');  
-var assert = chai.assert;
+// var chai = require('chai');  
+// var assert = chai.assert;
 
-let reverseVowels = (inputString) => {
-    let arrayVowels = ['a', 'e', 'i', 'o', 'u'];
-    let sa = inputString.split('');
-    
-    let left = 0, right = sa.length-1;
-    
-    while(left < right)  {
-        if(arrayVowels.includes(sa[left]) && arrayVowels.includes(sa[right])) {
-            let temp = sa[left];
-            sa[left] = sa[right]
-            sa[right] = temp
-            left++;
-            right--;
-        }else if(!arrayVowels.includes(sa[left])) {
-            left++;
-        } else {
-            right--
-        }
-    }
-
-    console.log(sa.join(""));
-          
-    return sa.join("");
-}
+// describe("Problem Solving", () => {
+//     it('Testcase 1', () => {
+//         assert.equal();
+//     });
+//     it('Testcase 2', () => {
+//         assert.equal();
+//     });
+//     it('Testcase 3', () => {
+//         assert.equal();
+//     });
+// })
 
 
-describe("Problem Solving", () => {
-    it('Testcase 1', () => {
-        assert.equal(reverseVowels("leetcode"), 'leotcede');
-    });
-    it('Testcase 2', () => {
-        assert.equal(reverseVowels("aeiou"), 'uoiea');
-    });
-    it('Testcase 3', () => {
-        assert.equal(reverseVowels("hello"), 'holle');
-    });
-})
+
+
+console.log(removeElement1([0,1,2,2,3,0,4,2], 2))

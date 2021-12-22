@@ -1,24 +1,29 @@
 // "Given sorted integer array in non-decreasing order, return the array of the squares of each number sorted in non-decreasing order"
 
-let a = [-7,-1,2,3,4,5]
+let nums = [-7, -5, 1, 3, 4, 7];
 
 let squareSort = (nums) => {
-    let left = 0, right = nums.length-1;
-    while(left < right) {
-        nums[left] *= nums[left];
-        nums[right] *= nums[right];
-        left++;
-        right--;
-        if(left === right){
-            nums[left] *= nums[left]
+    for(let i=0; i<nums.length;i++) {
+        nums[i] = nums[i]*nums[i]
+    }
+
+    let left = 0;
+    let right = nums.length-1
+    let numsIndex = nums.length-1;
+    let sortedNums = [];
+    console.log(nums)
+    while(left <= right) {
+        let temp = 0;
+        if(nums[left] < nums[right]) {
+            sortedNums[numsIndex--] = nums[right--]
+        }else {
+            sortedNums[numsIndex--] = nums[left++] 
         }
     }
-    console.log(nums)
-    return nums;
+    console.log(sortedNums)
 }
 
-squareSort(a)
-
+squareSort(nums);
 
 // from Babu Narayanan Manickam to everyone:    9:32 AM
 // 1) Create a new array of same size and value
