@@ -10,10 +10,29 @@
 // Given an array of positive integers, find the subarrays that adds up to the given number (k)
 
 
-let nums = [1,7,4,3,1,2,1,5,1];
+// let nums = [1,7,4,3,1,2,1,5,1];
+// let k = 7;
+
+// let growShrink = (nums, target) => {
+//     let left = 0, sum =0;
+//     for(let right=0; right < nums.length; right++) {
+//         sum += nums[right];
+//         while(sum > target) {
+//             sum -= nums[left++]
+//         }
+//         if(sum === target) {
+//             console.log(left, right)
+//         }
+//     }
+
+// }
+
+// growShrink(nums, k)
+
+let nums = [1, 7, 4, 3, 1, 2, 1, 5, 1];
 let k = 7;
 
-let growShrink = (nums, target) => {
+let slides = (nums, target) => {
     let left = 0, sum =0;
     for(let right=0; right < nums.length; right++) {
         sum += nums[right];
@@ -24,7 +43,6 @@ let growShrink = (nums, target) => {
             console.log(left, right)
         }
     }
-
 }
 
-growShrink(nums, k)
+slides(nums, k)
