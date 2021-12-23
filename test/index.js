@@ -93,7 +93,7 @@ let maxAvgSubArray1 = (nums, k) => {
     }
 
     return tempSum/k
-    
+
 }
 
-maxAvgSubArray1(nums, k)
+maxAvgSubArray1(nums, k);
