@@ -39,61 +39,46 @@
 //     });
 // })
 
-let nums = [1,12,-5,-6,50,3];
-let k = 4;
+// https://leetcode.com/problems/longest-substring-without-repeating-characters/
 
-let maxAvgSubArray = (nums, k) => {
-    let defaultSum = 0, defaultAvg = 0;
-    for(let i=0; i<k; i++) {
-        defaultAvg += nums[i]
-    }
-    
-    defaultAvg = defaultSum/k;
+let inputString = "cbaedbcatgh";
+let match = "abc"
 
-    let right = 1, tempAvg = 0
+let findAnagram = (inputString, match) => {
+    let splitInput = inputString.split('');
+    let splitMatch = match.split('');
 
-    while(right < Math.round(nums.length/2)){
-        let temp = 0
-        for(let i=right; i<right+k; i++) {
-            temp += nums[i];
-        }
-        tempAvg = temp/k
+    let matchObj = {};
 
-        if(defaultAvg < tempAvg ) {
-            defaultAvg = tempAvg
-        }
-
-        right++;
+    for(let i=0; i<splitMatch.length; i++) {
+        matchObj[splitMatch[i]] = matchObj.hasOwnProperty(splitMatch[i]) ? matchObj[splitMatch[i]]+1 : 1; 
     }
 
-    console.log(defaultAvg)
+    let inputStringObj = {};
+
+    for(let i=0; i<splitInput.length;i++) {
+        inputStringObj[splitInput[i]] = inputStringObj.hasOwnProperty(splitInput[i]) ? inputStringObj[splitInput[i]]+1 : 1; 
+
+        if(i >= match.length) {
+            delete inputStringObj[splitInput[i-match.length]]
+
+            if(inputStringObj[splitInput[i]] === 1) {
+                delete inputStringObj[splitInput[i]]
+            } else {
+                inputStringObj[splitInput[i]] = inputStringObj[splitInput[i]] - 1
+            }
+        }
+
+        
+        console.log(matchObj)
+        console.log(i)
+        console.log(inputStringObj)
+
+        // if(JSON.stringify(matchObj) === JSON.stringify(inputStringObj)) {
+        //     console.log("matches")
+        // }
+    }
 
 }
 
-maxAvgSubArray(nums, k)
-
-
-// sliding window - optimized
-let maxAvgSubArray1 = (nums, k) => {
-    let right = k;
-    let defaultSum = 0;
-    for(let i=0; i<k; i++) {
-        defaultSum += nums[i]
-    }
-
-    let left=0;
-    let tempSum = 0;
-    while(right < nums.length) {
-        
-        defaultSum = defaultSum + nums[right++] - nums[left++]
-        
-        if(tempSum < defaultSum) {
-            tempSum = defaultSum
-        }
-    }
-
-    return tempSum/k
-
-}
-
-maxAvgSubArray1(nums, k);
+findAnagram(inputString, match)
