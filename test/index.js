@@ -50,26 +50,26 @@ let findAnagram = (inputString, match) => {
 
     let matchObj = {};
 
-    for(let i=0; i<splitMatch.length; i++) {
-        matchObj[splitMatch[i]] = matchObj.hasOwnProperty(splitMatch[i]) ? matchObj[splitMatch[i]]+1 : 1; 
+    for (let i = 0; i < splitMatch.length; i++) {
+        matchObj[splitMatch[i]] = matchObj.hasOwnProperty(splitMatch[i]) ? matchObj[splitMatch[i]] + 1 : 1;
     }
 
     let inputStringObj = {};
 
-    for(let i=0; i<splitInput.length;i++) {
-        inputStringObj[splitInput[i]] = inputStringObj.hasOwnProperty(splitInput[i]) ? inputStringObj[splitInput[i]]+1 : 1; 
+    for (let i = 0; i < splitInput.length; i++) {
+        inputStringObj[splitInput[i]] = inputStringObj.hasOwnProperty(splitInput[i]) ? inputStringObj[splitInput[i]] + 1 : 1;
 
-        if(i >= match.length) {
-            delete inputStringObj[splitInput[i-match.length]]
+        if (i >= match.length) {
+            delete inputStringObj[splitInput[i - match.length]]
 
-            if(inputStringObj[splitInput[i]] === 1) {
+            if (inputStringObj[splitInput[i]] === 1) {
                 delete inputStringObj[splitInput[i]]
             } else {
                 inputStringObj[splitInput[i]] = inputStringObj[splitInput[i]] - 1
             }
         }
 
-        
+
         console.log(matchObj)
         console.log(i)
         console.log(inputStringObj)
@@ -81,4 +81,5 @@ let findAnagram = (inputString, match) => {
 
 }
 
-findAnagram(inputString, match)
+// findAnagram(inputString, match)
+
