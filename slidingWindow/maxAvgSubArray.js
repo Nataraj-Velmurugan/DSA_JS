@@ -1,10 +1,14 @@
-let nums = [1,12,-5,-6,50,3];
-let k = 4;
+// let nums = [1,12,-5,-6,50,3];
+// let k = 4;
+
+let nums = [9,7,3,5,6,2,0,8,1,9];
+let k = 6;
+
 
 let maxAvgSubArray = (nums, k) => {
     let defaultSum = 0, defaultAvg = 0;
     for(let i=0; i<k; i++) {
-        defaultAvg += nums[i]
+        defaultSum += nums[i]
     }
     
     defaultAvg = defaultSum/k;
@@ -29,19 +33,22 @@ let maxAvgSubArray = (nums, k) => {
 
 }
 
-maxAvgSubArray(nums, k)
+// maxAvgSubArray(nums, k)
 
 
 // sliding window - optimized
 let maxAvgSubArray1 = (nums, k) => {
+    if(nums.length === 1) return nums[0]/k
     let right = k;
     let defaultSum = 0;
     for(let i=0; i<k; i++) {
         defaultSum += nums[i]
     }
 
+    if(nums.length === k) return defaultSum/k
+
     let left=0;
-    let tempSum = 0;
+    let tempSum = defaultSum;
     while(right < nums.length) {
         
         defaultSum = defaultSum + nums[right++] - nums[left++]
@@ -56,3 +63,5 @@ let maxAvgSubArray1 = (nums, k) => {
 }
 
 maxAvgSubArray1(nums, k);
+
+
