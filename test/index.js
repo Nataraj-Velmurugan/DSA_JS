@@ -82,3 +82,48 @@ let findAnagram = (inputString, match) => {
 }
 
 // findAnagram(inputString, match)
+// String[] ch = {"abb", "abc", "xyz", "xyy"};
+// String pattern = "mnn";
+// Output: ["xyy","abb"] --> List -> Any order
+// Answer: xyy and abb have same character at index 1 and 2 like the pattern
+// Example 2:
+// String[] ch = {"abb", "abc", "xyz", "xyy"};
+// String pattern =  "mno";
+// Output: ["abc", "xyz"]
+// Output: abc and xyz have all distinct characters, similar to the pattern.
+// Example 3:
+// String[] ch = ["abb", "abc", "xyz", "xyy"];
+// String pattern = "aba";
+// Output: [] 
+// Pattern has same character at index 0 and 2. No word in dictionary follows the pattern.
+
+let ch = ["abb", "abc", "xyz", "xyy"];
+let pattern = "mno";
+
+let findPatternMatch = (ch, pattern) => {
+
+    let pt = pattern.split('');
+    let result = [];
+
+    for(let i=0; i<ch.length; i++) {
+        let chMap = {};
+        let ptMap = {};
+        let cht = ch[i].split('');
+        let defaultValue = true;
+        for(let j=0; j<pt.length; j++) {
+            if(!chMap.hasOwnProperty(cht[j])) chMap[cht[j]] = pt[j];
+            if(!ptMap.hasOwnProperty(pt[j])) ptMap[pt[j]] =  cht[j];
+            
+            if(chMap[cht[j]] !== pt[j] || ptMap[pt[j]] !==  cht[j]) defaultValue = false  
+        }
+
+        if(defaultValue === true) result.push(ch[i])
+
+    }
+
+    return result
+
+}
+
+// console.log(findPatternMatch(ch, pattern))
+
