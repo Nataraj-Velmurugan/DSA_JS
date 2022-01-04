@@ -105,19 +105,19 @@ let findPatternMatch = (ch, pattern) => {
     let pt = pattern.split('');
     let result = [];
 
-    for(let i=0; i<ch.length; i++) {
+    for (let i = 0; i < ch.length; i++) {
         let chMap = {};
         let ptMap = {};
         let cht = ch[i].split('');
         let defaultValue = true;
-        for(let j=0; j<pt.length; j++) {
-            if(!chMap.hasOwnProperty(cht[j])) chMap[cht[j]] = pt[j];
-            if(!ptMap.hasOwnProperty(pt[j])) ptMap[pt[j]] =  cht[j];
-            
-            if(chMap[cht[j]] !== pt[j] || ptMap[pt[j]] !==  cht[j]) defaultValue = false  
+        for (let j = 0; j < pt.length; j++) {
+            if (!chMap.hasOwnProperty(cht[j])) chMap[cht[j]] = pt[j];
+            if (!ptMap.hasOwnProperty(pt[j])) ptMap[pt[j]] = cht[j];
+
+            if (chMap[cht[j]] !== pt[j] || ptMap[pt[j]] !== cht[j]) defaultValue = false
         }
 
-        if(defaultValue === true) result.push(ch[i])
+        if (defaultValue === true) result.push(ch[i])
 
     }
 
@@ -127,20 +127,34 @@ let findPatternMatch = (ch, pattern) => {
 
 // console.log(findPatternMatch(ch, pattern))
 
-let s = "abcabcacbcabcabcbcacbca";
+let s1 = "3[a2[c]]";
 
-var numberOfSubstrings = function(s) {
-    let count = 0;
-    for(let i=0; i<s.length-2; i++) {
-     let j = s.length;
-      while(s.substring(i, j).length >= 3) {
-          console.log(s.substring(i+1, j))
-        if(s.substring(i, j).includes('a') && s.substring(i, j).includes('b') && s.substring(i, j).includes('c')) count++;
-        j--;
-      }
+var decodeString = function (s) {
+
+    let st = s.split('');
+    let right = st.length - 1;
+    let output = '';
+    while (right >= 0) {
+        if (!isNaN(parseInt(st[right]))) {
+            console.log(st[right])
+            let ind = '';
+            let index = 0
+            for (let j = right; j < st.length; j++) {
+                if (st[j] === ']') {
+                    index += j;
+                    break;
+                }
+            }
+            s.substring(right + 2, index)
+            for (let j = 0; j < st[right]; j++) {
+                ind += s.substring(right + 2, index)
+            }
+            console.log(ind)
+        }
+        right--;
     }
-    
-    return count;
-  };
+};
 
-  console.log(numberOfSubstrings(s))
+
+// console.log(decodeString(s1))
+
