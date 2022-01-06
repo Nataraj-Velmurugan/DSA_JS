@@ -11,26 +11,3 @@
 //     c) compare with existing sum --> whichever max --> make it max
 
 
-let nums = [1,5,2,3,7,1]
-// from Babu Narayanan Manickam to everyone:    12:32 PM
-let k = 3
-
-let addSum = (nums, k) => {
-    
-    let max = nums[1]+nums[2]+nums[3];
-    for(let i=1; i<nums.length; i++) {
-        let temp = 0;
-        temp += nums[i];
-        while(temp < max) {
-            console.log(temp)
-            temp += nums[i++]
-        }
-        if(temp > max) {
-            console.log(temp)
-            max = temp
-        }
-    }
-    console.log(max)
-}
-
-addSum(nums, 1)
