@@ -49,7 +49,7 @@ function isLowerCase(myString) {
     return (myString === myString.toLowerCase());
 }
 
-let s = "dDzeE"
+let s1 = "dDzeE"
 
 var longestNiceSubstring = function (s) {
     let lns = '';
@@ -88,7 +88,3 @@ var longestNiceSubstring = function (s) {
 // console.log(longestNiceSubstring(s))
 
 
-
-
-
-    
