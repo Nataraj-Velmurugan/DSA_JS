@@ -61,7 +61,7 @@ var longestNiceSubstring = function (s) {
         console.log(i)
         while (bool === true) {
             if (s[counter + 1] === undefined) break;
-           
+
             if ((isLowerCase(s[counter]) && s[counter] === s[counter + 1].toLowerCase()) || (isUpperCase(s[counter]) && s[counter] === s[counter + 1].toUpperCase())) {
                 if (lns[lns.length - 1] !== s[counter]) lns += s[counter]
                 if (lns[lns.length - 1] !== s[counter + 1]) lns += s[counter + 1]
@@ -74,17 +74,37 @@ var longestNiceSubstring = function (s) {
         if (compStr.length < lns.length) {
             compStr = lns
             lns = ''
-        } 
+        }
 
     }
 
 
 
-    if(compStr.length > lns.length) return compStr
+    if (compStr.length > lns.length) return compStr
     return lns
 
 };
 
 // console.log(longestNiceSubstring(s))
+let strs = ["ac", "d"]
+
+var groupAnagrams = function (strs) {
+    let resObj = {}
+    for (let i = 0; i < strs.length; i++) {
+        let sortString = strs[i].split('').sort().join('');
+        !resObj.hasOwnProperty(sortString) ? resObj[sortString] = [strs[i]] : resObj[sortString].push(strs[i])
+    }
+    let resArr = [];
+    for (let i in resObj) {
+        resArr.push(resObj[i])
+    }
+
+    return resArr
+
+}
+
+
+// groupAnagrams(strs)
+
 
 
