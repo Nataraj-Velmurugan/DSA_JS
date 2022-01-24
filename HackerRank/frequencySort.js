@@ -11,6 +11,13 @@ let frequencySort = (data) => {
         dataArr.push(dataObj[i])
     }
     dataArr.sort((a,b) => {return a-b})
+
+    data.sort((a,b) => {
+        return dataObj[a] > dataObj[b] ? -1 : 1;
+    })
+
+    console.log(data)
+    data.sort()
     
     let newArr = [];
     for(let i=0; i<dataArr.length; i++) {

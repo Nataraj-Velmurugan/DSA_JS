@@ -123,4 +123,77 @@ var areOccurrencesEqual = function(s) {
     return result
 };
 
-console.log(areOccurrencesEqual(s))
+// console.log(areOccurrencesEqual(s))
+
+
+function bubble_Sort(arr){
+    for (i=0; i < arr.length; i++){
+        for (j=0; j < arr.length-i; j++){
+            if (arr[j] > arr[j+1]){
+                let temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+
+    return arr;
+}
+
+// console.log(bubble_Sort([3, 0, 2, 5, -1, 4, 1]))
+
+const insertion_Sort = (nums) => {
+    for (let i = 1; i < nums.length; i++) {
+      let j = i - 1
+      let temp = nums[i]
+      while (j >= 0 && nums[j] > temp) {
+        nums[j + 1] = nums[j]
+        j--
+      }
+      nums[j+1] = temp
+    }
+    return nums
+}
+
+const selectionSort = (originalList) => {
+    
+    const list = [...originalList]
+    const len = list.length
+    for (let i = 0; i < len; i++) {
+      let min = i
+      for (let j = i + 1; j < len; j++) {
+        if (list[min] > list[j]) {
+          min = j
+        }
+      }
+      if (min !== i) {
+        [list[i], list[min]] = [list[min], list[i]]
+      }
+    }
+    return list
+}
+
+const listOfNumbers = [1, 6, 3, 4, 5]
+// console.log(selectionSort(listOfNumbers)) //[1,3,4,5,6]
+
+
+let temperatures = [30,60,90];
+  
+var dailyTemperatures = function(temperatures) {
+
+let days = []
+let output = [];
+for(let i = 0; i<temperatures.length; i++){           
+    while(days.length !== 0 && temperatures[days[days.length - 1]] < temperatures[i]) {
+        let popElement = days[days.length - 1];
+        output[days[days.length - 1]] = i - popElement;
+        days.pop()
+    }
+        
+    days.push(i);
+}
+
+return output;
+}
+
+console.log(dailyTemperatures(temperatures))
