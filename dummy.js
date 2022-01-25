@@ -176,24 +176,62 @@ const selectionSort = (originalList) => {
 const listOfNumbers = [1, 6, 3, 4, 5]
 // console.log(selectionSort(listOfNumbers)) //[1,3,4,5,6]
 
+class Stack {
+    constructor() {
+        this.items = [];
+    }
 
-let temperatures = [30,60,90];
+    peek(){
+        return this.items[this.items.length-1];
+    }
+
+    push(element){
+        this.items.push(element);
+    }
+
+    pop() {
+        if(this.items.length > 0) {
+            return this.items.pop();
+        }
+    }
+
+    clear() {
+        this.items = []
+    }
+
+    isEmpty(){
+        return this.items.length == 0;
+     }
+
+    size() {
+        return this.items.length;
+    }
+
+}
+
+let temperatures = [30,40,50,50];
   
 var dailyTemperatures = function(temperatures) {
 
-let days = []
+let days = new Stack();
 let output = [];
 for(let i = 0; i<temperatures.length; i++){           
-    while(days.length !== 0 && temperatures[days[days.length - 1]] < temperatures[i]) {
-        let popElement = days[days.length - 1];
-        output[days[days.length - 1]] = i - popElement;
-        days.pop()
+    while(!days.isEmpty() && temperatures[days.peek()] < temperatures[i]) {
+        output[days.peek()] = i - days.pop(); 
     }
-        
     days.push(i);
 }
 
+// for(let i = 0; i<temperatures.length; i++){           
+//     if(temperatures[i] < temperatures[i+1]) output[i] = 1;
+//     else{
+//         let j = i+2;
+//         while(j< temperatures.length && temperatures[i] >= temperatures[j]) j++;
+//         if(j < temperatures.length && temperatures[i] < temperatures[j]) output[i] = j-i;
+//     }
+// }
 return output;
+
 }
 
 console.log(dailyTemperatures(temperatures))
