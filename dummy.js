@@ -107,32 +107,32 @@ var groupAnagrams = function (strs) {
 // groupAnagrams(strs)
 let s = "abacbc"
 
-var areOccurrencesEqual = function(s) {
+var areOccurrencesEqual = function (s) {
     let sObj = {}
-    for(let i=0; i<s.length; i++){
-      sObj[s[i]] ? sObj[s[i]] = sObj[s[i]] + 1 : sObj[s[i]] = 1
+    for (let i = 0; i < s.length; i++) {
+        sObj[s[i]] ? sObj[s[i]] = sObj[s[i]] + 1 : sObj[s[i]] = 1
     }
-  
+
     let result = true;
     let sObjKey = Object.keys(sObj);
     // console.log(sObjKey)
-    for(let i=0; i<Object.keys(sObj).length-1; i++){
-        if(sObj[sObjKey[i]] !== sObj[sObjKey[i+1]]) return false
+    for (let i = 0; i < Object.keys(sObj).length - 1; i++) {
+        if (sObj[sObjKey[i]] !== sObj[sObjKey[i + 1]]) return false
     }
-  
+
     return result
 };
 
 // console.log(areOccurrencesEqual(s))
 
 
-function bubble_Sort(arr){
-    for (i=0; i < arr.length; i++){
-        for (j=0; j < arr.length-i; j++){
-            if (arr[j] > arr[j+1]){
+function bubble_Sort(arr) {
+    for (i = 0; i < arr.length; i++) {
+        for (j = 0; j < arr.length - i; j++) {
+            if (arr[j] > arr[j + 1]) {
                 let temp = arr[j];
-                arr[j] = arr[j+1];
-                arr[j+1] = temp;
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
             }
         }
     }
@@ -144,35 +144,74 @@ function bubble_Sort(arr){
 
 const insertion_Sort = (nums) => {
     for (let i = 1; i < nums.length; i++) {
-      let j = i - 1
-      let temp = nums[i]
-      while (j >= 0 && nums[j] > temp) {
-        nums[j + 1] = nums[j]
-        j--
-      }
-      nums[j+1] = temp
+        let j = i - 1
+        let temp = nums[i]
+        while (j >= 0 && nums[j] > temp) {
+            nums[j + 1] = nums[j]
+            j--
+        }
+        nums[j + 1] = temp
     }
     return nums
 }
 
 const selectionSort = (originalList) => {
-    
+
     const list = [...originalList]
     const len = list.length
     for (let i = 0; i < len; i++) {
-      let min = i
-      for (let j = i + 1; j < len; j++) {
-        if (list[min] > list[j]) {
-          min = j
+        let min = i
+        for (let j = i + 1; j < len; j++) {
+            if (list[min] > list[j]) {
+                min = j
+            }
         }
-      }
-      if (min !== i) {
-        [list[i], list[min]] = [list[min], list[i]]
-      }
+        if (min !== i) {
+            [list[i], list[min]] = [list[min], list[i]]
+        }
     }
     return list
 }
 
 const listOfNumbers = [1, 6, 3, 4, 5]
 // console.log(selectionSort(listOfNumbers)) //[1,3,4,5,6]
+
+let arr = [1, 2, 3, 4, 5], k = 4, x = 3;
+
+var findClosestElements = function (arr, k, x) {
+    let resArr = [];
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (
+            (Math.abs(arr[i] - x) < Math.abs(arr[i + 1] - x)) ||
+            (Math.abs(arr[i] - x) === Math.abs(arr[i + 1] - x) && arr[i] < arr[i + 1])
+        ) {
+            resArr.push(arr[i])
+        }
+    }
+
+    return resArr
+};
+
+// console.log(findClosestElements(arr, k, x))
+let  arr1 = [2,1,4,7,3,2,5];
+
+var longestMountain = function(arr) {
+    let left=0, right = arr.length-1;
+    let defaults = 0;
+    let newArr = []
+    while(left < Math.ceil(arr.length/2)){
+      if(arr[left] < arr[left+1]) {
+        newArr.push(arr[left+1]) 
+      }
+      if(arr[right-1] > arr[right]) {
+        newArr.push(arr[right-1])
+      }
+      right-- 
+      left++ 
+    }
+
+    return newArr
+};
+
+// console.log(longestMountain(arr1))
 
