@@ -215,3 +215,25 @@ var longestMountain = function(arr) {
 
 // console.log(longestMountain(arr1))
 
+let intervals = [[4,5],[2,3],[1,2]]
+
+var findRightInterval = function(intervals) {
+    let resArr = [];  
+    for(let i=0; i<intervals.length; i++){
+      let defFlag = false
+      for(let j=0; j<intervals.length; j++){
+        if(i !== j){
+          if(intervals[i][1] >= intervals[j][0]){
+          resArr[i] = j
+          defFlag = true
+        }
+        }
+      }
+      console.log(intervals)
+      if(defFlag === false)  resArr.push(-1)
+      console.log(resArr)
+    }
+    return resArr
+  };
+
+  findRightInterval(intervals)
