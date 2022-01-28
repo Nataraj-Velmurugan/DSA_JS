@@ -28,6 +28,8 @@ class Stack {
     }
 }
 
+let s = "azxxzy";
+
 var removeDuplicates = function(s) {
    let stack = new Stack();
     
@@ -38,3 +40,18 @@ var removeDuplicates = function(s) {
   
   return stack.items.join('');
 };
+
+// bruteforce
+var removeDuplicates1 = function(s) {
+    let st = s.split('');
+   for(let i=0; i<st.length-1; i++){
+    if(st[i] === st[i+1]){
+        st.splice(i, 2);
+        i = i-2;
+    }
+   }
+   
+   return st.join('');
+ };
+
+ console.log(removeDuplicates1(s))
