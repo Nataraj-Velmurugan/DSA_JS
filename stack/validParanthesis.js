@@ -39,20 +39,14 @@ let parObj = {
     ')': '('
 };
 
-    function validParanthesis(str) {
-        for (let i = 0; i < str.length; i++) {
-            if (Object.keys(parObj).includes(str[i])) {
-                if (stack.isEmpty() || stack.pop() !== parObj[str[i]]) {
-                    return false
-                }
-            } else {
-                stack.push(str[i])
-            }
-            console.log(stack)
+function validParanthesis(str) {
+    for (let i = 0; i < str.length; i++) {
+        if (Object.keys(parObj).includes(str[i])) {
+            if (stack.isEmpty() || stack.pop() !== parObj[str[i]]) return false
+            else stack.push(str[i])
         }
-
-        if (stack.isEmpty()) return true
-        return false
     }
+    return stack.isEmpty()
+}
 
 console.log(validParanthesis(para))
