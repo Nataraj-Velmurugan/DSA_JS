@@ -1,4 +1,4 @@
-let s = "((("
+let s = "()))(("
 
 class Stack {
     constructor() {
@@ -44,9 +44,10 @@ var minAddToMakeValid = function(s) {
         }else {
             stack.push(s[i])
         }
+        console.log(stack.items)
     }
 
     return stack.size()
 };
 
-minAddToMakeValid(s)
+console.log(minAddToMakeValid(s))
