@@ -23,7 +23,7 @@ var findAnagrams = function(s, p) {
       if (count === true) resultArr.push(left)
 
       if (s[left] !== s[right]) {
-          sObj[s[left]] === 1? delete sObj[s[left]] : sObj[s[left]] = sObj[s[left]] - 1
+          sObj[s[left]] === 1 ? delete sObj[s[left]] : sObj[s[left]] = sObj[s[left]] - 1
           sObj[s[right]] ? sObj[s[right]] = sObj[s[right]] + 1 : sObj[s[right]] = 1
       } 
 
