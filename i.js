@@ -1,22 +1,25 @@
-let n = 10;
-
-let fibonacci = (n) => {
-    let n1 = 0, n2 = 1;
-    let resArr = []
-
-    for (let i = 1; i <= n; ++i) {
-        resArr.push(n1)
-        let n3 = n1 + n2;
-        n1 = n2;
-        n2 = n3;
+let sumZero1 = function(n) {
+    let resArr = [];
+    if(n%2 !== 0){
+        let left=0, right=Math.floor(n/2)
+        resArr.push(0)
+        while(left < right){
+            resArr.push(left+1)
+            resArr.push(-(left+1))
+            left++
+        }
+        return resArr
+    } else {
+        let left=0, right=n/2
+        
+        while(left < right){
+            resArr.push(n)
+            resArr.push(-(n))
+            left++
+            n--
+        }
+        return resArr
     }
+};
 
-    return resArr
-}
-
-// console.log(fibonacci(n))
-
-
-// using recursion
-
-
+console.log(sumZero1(8))
